@@ -20,9 +20,9 @@
 ###### Q. @Table 어노테이션은 그동안 테이블 이름만 작성하는 줄 알았는데, 아래처럼도 사용된다. 무슨 의미을 가지고 있는걸까?
 
 ```kotlin
-@Table(
-    uniqueConstraints = [UniqueConstraint(name = "uk_member_login_id", columnNames = ["loginId"])]
-)
+    @Table(
+        uniqueConstraints = [UniqueConstraint(name = "uk_member_login_id", columnNames = ["loginId"])]
+    )
 ```
 
 ##### A. "uk_member_login_id" 라는 이름으로 loginId 컬럼의 고유 제약 조건(중복된 값 비허용)을 정의한다. 나중에 조건을 참조하거나 변경할 때 정의된 이름을 사용할 수 있다.
@@ -30,3 +30,24 @@
 ###### Q. 어떤 프로젝트에서는 JpaRepository를, 어떤 프로젝트에서는 CrudRepository를 상속받는다. 두 레포지토리는 어떤 차이점이 있을까?
 
 ##### A. 단순히 CRUD 작업만 한다면 CrudRepository를, 그에 더해 페이징이나 sort등의 기능을 사용한다면 JpaRepository를 사용한다.
+
+<br>
+
+#### 🔖 chapter 2-3
+###### Q. 어노테이션을 만드는 이유는 뭘까?
+
+###### Q. 아래 코드에 사용되는 어노테이션과 클래스는 무슨 의미를 가지고 있는걸까?
+```kotlin
+    @Target(AnnotationTarget.FIELD)
+    @Retention(AnnotationRetention.RUNTIME)
+    @MustBeDocumented
+    @Constraint(validatedBy = [])
+    annotation class VaildEnum(
+        val message: String  = "Invalid enum value",
+        val groups: Array<KClass<*>> = [],
+        val payload: Array<KClass<out Payload>> = [],
+        val enumClass: KClass<out Enum<*>>
+)
+
+```
+
