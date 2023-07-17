@@ -75,9 +75,20 @@
 
 <br>
 
-#### 🔖 chapter 2-4
+#### 🔖 chapter 2-5
 
 ###### Q. @RestControllerAdvice 어노테이션은 무슨 역할을 하는걸까?
 
 ##### A. 전역적인 예외처리와 응답 처리를 담당하는 클래스에 적용된다. 애플리케이션에서 발생하는 예외에 관래 일관적으로 응답할 수 있게 해준다.
+
+<br>
+
+#### 🔖 chapter 3-2
+
+###### Q. 처음보는 문법이다! 무슨 의미일까?
+```kotlin
+    private val key by lazy { Keys.hmacShaKeyFor(Decoders.BASE64.decode(secretKey)) }
+```
+
+##### A. lazy는 델리게이트로, 처음으로 접근되는 시점에서 초기화가 이루어지는 지연 초기화 기법을 제공한다. 그 앞에 붙은 by는 델리게이트 패턴을 구현하기위해 사용되는 키워드이다. 
 
