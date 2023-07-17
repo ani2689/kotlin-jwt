@@ -1,5 +1,6 @@
 package com.ani.kotlinjwt.member.controller
 
+import com.ani.kotlinjwt.common.dto.BaseResponse
 import com.ani.kotlinjwt.member.dto.MemberRequestDto
 import com.ani.kotlinjwt.member.service.MemberService
 import org.springframework.http.ResponseEntity
@@ -15,8 +16,8 @@ class MemberController (
     private val memberService: MemberService
 ){
     @PostMapping("/signup")
-    fun signUp(@RequestBody @Valid memberRequestDto: MemberRequestDto): ResponseEntity<String> {
+    fun signUp(@RequestBody @Valid memberRequestDto: MemberRequestDto): BaseResponse<Unit> {
         return memberService.signUp(memberRequestDto)
-            .let { ResponseEntity.ok(it) }
+            .let { BaseResponse(message = it) }
     }
 }
