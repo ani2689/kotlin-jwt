@@ -2,6 +2,7 @@ package com.ani.kotlinjwt.member.dto
 
 import com.ani.kotlinjwt.common.annotation.VaildEnum
 import com.ani.kotlinjwt.common.status.Gender
+import com.ani.kotlinjwt.member.entity.Member
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
@@ -63,5 +64,8 @@ data class MemberRequestDto(
         get() = _email!!
     private fun String.toLocalDate() =
         LocalDate.parse(this, DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
+    fun toEntity(): Member =
+        Member(id, loginId, password, name, birthDate, gender, email)
 
 }
