@@ -29,3 +29,5 @@ logging:
       hibernate:
         SQL: debug
         type.descriptor.sql: trace
+jwt:
+  secret: kotlin-jwt-secret-key-12345678-ani-whyrano-000000000000000
